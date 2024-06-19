@@ -1,4 +1,5 @@
 import React from "react";
+import waiter from "../assets/waiter.png";
 import { Box, Container, createTheme, Grid, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
@@ -42,7 +43,7 @@ export const Sessao = () => {
       <Container maxWidth="lg">
         <Grid container spacing={4} alignItems="center">
           <Grid item xs={12} md={6}>
-            <img src={""} alt="Pessoa Servindo" className={classes.image} />
+            <img src={waiter} style={{ maxWidth: "75%" }} alt="Pessoa Servindo" className={classes.image} />
           </Grid>
           <Grid item xs={12} md={6} className={classes.textContainer}>
             <Typography variant="h4" className={classes.title}>

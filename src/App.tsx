@@ -6,7 +6,6 @@ import {
   Button,
   Container,
   Grid,
-  Paper,
   Box,
   CssBaseline,
   createTheme,
@@ -16,8 +15,9 @@ import {
   Divider,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import backgroundImage from "./assets/opa.gif";
-import celular from "./assets/celular.png";
+import logo from "./assets/logo.png";
+import backgroundImage from "./assets/restaurant.gif";
+import celular from "./assets/reservify_app.png";
 import { Sessao } from "./components/primeiro";
 import axios from "axios";
 const theme = createTheme();
@@ -83,7 +83,7 @@ const useStyles = makeStyles(() => ({
   backgroundSite: {
     width: "100%",
     padding: theme.spacing(4),
-    backgroundColor: "#1E1E1E",
+    backgroundColor: "#070f13",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -193,11 +193,16 @@ export const App = () => {
       <CssBaseline />
       <Box className={classes.root}>
         <ElevationScroll>
-          <AppBar position="fixed">
-            <Toolbar>
+          <AppBar position="fixed"
+          style={{ backgroundColor: '#04080a' }}
+          >
+            <Toolbar disableGutters style={{ display: 'flex', gap: '5px', margin: '10px'}}>
+              
+              <img src={logo} alt="Reservify Logo" width={35} />
+
               <Typography
                 variant="h6"
-                color="inherit"
+                color="white"
                 noWrap
                 className={classes.title}
               >
@@ -410,7 +415,7 @@ export const App = () => {
         <footer>
           <Box
             className={classes.backgroundSite}
-            style={{ padding: theme.spacing(4), backgroundColor: "gray" }}
+            style={{ padding: theme.spacing(4), backgroundColor: "#04080a" }}
           >
             <Typography
               variant="subtitle1"
