@@ -19,6 +19,7 @@ import { makeStyles } from "@mui/styles";
 import backgroundImage from "./assets/opa.gif";
 import celular from "./assets/celular.png";
 import { Sessao } from "./components/primeiro";
+import axios from "axios";
 const theme = createTheme();
 
 const useStyles = makeStyles(() => ({
@@ -162,6 +163,21 @@ const scrollToSection = (id: string) => {
   if (section) {
     section.scrollIntoView({ behavior: "smooth" });
   }
+};
+
+const Salvar = ({ email, nome }: { email: string; nome: string }) => {
+  axios
+    .post("https://email-service-5.onrender.com/", {
+      email: email,
+      nome: nome,
+    })
+    .then((res) => {
+      if (res.status === 200) {
+        alert("Email enviado com sucesso!");
+      } else {
+        alert("Erro ao enviar email!");
+      }
+    });
 };
 
 export const App = () => {
@@ -380,7 +396,7 @@ export const App = () => {
                       fullWidth
                       className={classes.formButton}
                       onClick={() => {
-                        console.log(emailEnviar);
+                        Salvar(emailEnviar);
                       }}
                     >
                       Enviar
