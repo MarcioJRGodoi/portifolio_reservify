@@ -114,11 +114,12 @@ const useStyles = makeStyles(() => ({
   downButton: {
     marginTop: theme.spacing(2),
     backgroundColor: "transparent",
-    color: "#1de9b6",
+    color: "white",
     fontSize: "24px",
     border: "none",
     cursor: "pointer",
     padding: 0,
+    top: "150%",
   },
   customDivider: {
     width: "100%",
@@ -152,7 +153,7 @@ function ElevationScroll(props: ElevationScrollProps) {
 
   return React.cloneElement(children, {
     style: {
-      backgroundColor: trigger ? "rgba(190,190,190, 1)" : "transparent",
+      backgroundColor: trigger ? "rgba(4,8,10, 1)" : "transparent",
       transition: trigger ? "0.3s" : "0.5s",
     },
   });
@@ -167,7 +168,7 @@ const scrollToSection = (id: string) => {
 
 const Salvar = ({ email, nome }: { email: string; nome: string }) => {
   axios
-    .post("https://email-service-5.onrender.com/", {
+    .post((true ? "https://email-service-5.onrender.com/" : "http://localhost:3001"), {
       email: email,
       nome: nome,
     })
@@ -233,24 +234,11 @@ export const App = () => {
                 >
                   Cansado de gastar tempo e dinheiro com pedidos de reserva?
                 </Typography>
-                <div className={classes.heroButtons}>
-                  <Grid container spacing={2} justifyContent="center">
-                    <Grid item>
-                      <Button variant="contained" color="primary">
-                        Get Started
-                      </Button>
-                    </Grid>
-                    <Grid item>
-                      <Button variant="outlined" color="primary">
-                        Learn More
-                      </Button>
-                    </Grid>
-                  </Grid>
-                </div>
               </Container>
               <Button
                 className={classes.downButton}
                 onClick={() => scrollToSection("infoSection")}
+                sx={{color: 'white', fontSize: '24px'}}
               >
                 V
               </Button>
