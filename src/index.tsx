@@ -1,15 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import {App} from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import { App } from "./pages/App";
+import { Pricing } from "./pages/Princing";
+import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { AlertaContainer } from "./plugins/Alerta";
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <AlertaContainer />
+    <Router>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/pricing" element={<Pricing />} />
+      </Routes>
+    </Router>
   </React.StrictMode>
 );
 

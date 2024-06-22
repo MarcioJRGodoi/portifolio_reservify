@@ -1,7 +1,5 @@
-import React, { ReactElement, useState } from "react";
+import React, { useState } from "react";
 import {
-  AppBar,
-  Toolbar,
   Typography,
   Button,
   Container,
@@ -10,16 +8,17 @@ import {
   CssBaseline,
   createTheme,
   ThemeProvider,
-  useScrollTrigger,
   TextField,
   Divider,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import logo from "./assets/logo.png";
-import backgroundImage from "./assets/restaurant.gif";
-import celular from "./assets/reservify_app.png";
-import { Sessao } from "./components/primeiro";
+import backgroundImage from "../assets/restaurant.gif";
+import celular from "../assets/reservify_app.png";
+import { Sessao } from "../components/primeiro";
 import axios from "axios";
+import { Navbar } from "../components/NavBar";
+import { Alerta } from "../plugins/Alerta";
+
 const theme = createTheme();
 
 const useStyles = makeStyles(() => ({
@@ -138,27 +137,6 @@ const darkTheme = createTheme({
   },
 });
 
-interface ElevationScrollProps {
-  children: ReactElement;
-  window?: () => Window;
-}
-
-function ElevationScroll(props: ElevationScrollProps) {
-  const { children, window } = props;
-  const trigger = useScrollTrigger({
-    disableHysteresis: true,
-    threshold: 0,
-    target: window ? window() : undefined,
-  });
-
-  return React.cloneElement(children, {
-    style: {
-      backgroundColor: trigger ? "rgba(4,8,10, 1)" : "transparent",
-      transition: trigger ? "0.3s" : "0.5s",
-    },
-  });
-}
-
 const scrollToSection = (id: string) => {
   const section = document.getElementById(id);
   if (section) {
@@ -167,18 +145,22 @@ const scrollToSection = (id: string) => {
 };
 
 const Salvar = ({ email, nome }: { email: string; nome: string }) => {
-  axios
-    .post((true ? "https://email-service-5.onrender.com/" : "http://localhost:3001"), {
-      email: email,
-      nome: nome,
-    })
-    .then((res) => {
-      if (res.status === 200) {
-        alert("Email enviado com sucesso!");
-      } else {
-        alert("Erro ao enviar email!");
+  if (!email || !nome) return Alerta().erro("Preencha todos os campos!");
+
+  Alerta().promisse(async () => {
+    const res = await axios.post(
+      false ? "https://email-service-5.onrender.com/" : "http://localhost:3001",
+      {
+        email: email,
+        nome: nome,
       }
-    });
+    );
+    if (res.status === 200) {
+      return Alerta().sucesso("E-mail enviado com sucesso!");
+    } else {
+      return Alerta().erro("Erro ao enviar e-mail!");
+    }
+  });
 };
 
 export const App = () => {
@@ -193,25 +175,7 @@ export const App = () => {
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <Box className={classes.root}>
-        <ElevationScroll>
-          <AppBar position="fixed"
-          style={{ backgroundColor: '#04080a' }}
-          >
-            <Toolbar disableGutters style={{ display: 'flex', gap: '5px', margin: '10px'}}>
-              
-              <img src={logo} alt="Reservify Logo" width={35} />
-
-              <Typography
-                variant="h6"
-                color="white"
-                noWrap
-                className={classes.title}
-              >
-                Reservify
-              </Typography>
-            </Toolbar>
-          </AppBar>
-        </ElevationScroll>
+        <Navbar />
         <main>
           <Box className={classes.heroContent}>
             <Box className={classes.heroBackground}>
@@ -238,7 +202,7 @@ export const App = () => {
               <Button
                 className={classes.downButton}
                 onClick={() => scrollToSection("infoSection")}
-                sx={{color: 'white', fontSize: '24px'}}
+                sx={{ color: "white", fontSize: "24px" }}
               >
                 V
               </Button>
