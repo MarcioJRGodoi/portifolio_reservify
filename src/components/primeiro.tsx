@@ -61,7 +61,7 @@ export const Sessao = () => {
             <Typography
               variant="body1"
               className={classes.text}
-              style={{ letterSpacing: "0.1em" }}
+              style={{ letterSpacing: "0.1em", textAlign: "justify"}}
             >
               Queremos te proporcionar uma reserva sem estresse, minimizando o
               tempo perdido para que você possa aproveitá-lo intensamente da

@@ -118,7 +118,7 @@ const useStyles = makeStyles(() => ({
     border: "none",
     cursor: "pointer",
     padding: 0,
-    top: "150%",
+    top: "70%",
   },
   customDivider: {
     width: "100%",
@@ -264,9 +264,6 @@ export const App = () => {
                       </Typography>
                     </li>
                   </ul>
-                  <Button variant="outlined" color="primary">
-                    Learn More
-                  </Button>
                 </Grid>
                 <Grid item xs={12} md={6} className={classes.rightContent}>
                   <img
@@ -303,7 +300,7 @@ export const App = () => {
                 gestão de reservas do seu restaurante.
               </Typography>
               <form noValidate autoComplete="off">
-                <Box sx={{ display: "flex", justifyContent: "center" }}></Box>
+                <Box sx={{marginTop: "12px", display: "flex", justifyContent: "center" }}></Box>
                 <Grid container spacing={2}>
                   {" "}
                   {/* Ajuste o spacing conforme necessário */}
