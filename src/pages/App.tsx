@@ -264,9 +264,6 @@ export const App = () => {
                       </Typography>
                     </li>
                   </ul>
-                  <Button variant="outlined" color="primary">
-                    Learn More
-                  </Button>
                 </Grid>
                 <Grid item xs={12} md={6} className={classes.rightContent}>
                   <img
