@@ -21,6 +21,14 @@ const useStyles = makeStyles(() => ({
     paddingTop: theme.spacing(10),
     paddingBottom: theme.spacing(8),
   },
+  backgroundSite: {
+    width: "100%",
+    padding: theme.spacing(4),
+    backgroundColor: "#070f13",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
   title: {
     textAlign: "center",
     marginBottom: theme.spacing(6),
@@ -106,9 +114,9 @@ export const Pricing = () => {
       <Navbar />
       <Container className={classes.root}>
         <Typography variant="h4" className={classes.title}>
-          Planos de Preços
+          Planos Oferecidos
         </Typography>
-        <Grid container spacing={6} justifyContent="center" marginTop={5} marginBottom={5}>
+        <Grid container spacing={6} justifyContent="center" marginTop={2} marginBottom={5}>
           <Grid item xs={12} sm={6} md={3}>
             <Box className={classes.plan}>
               <Typography variant="h6" className={classes.planTitle}>
@@ -175,12 +183,12 @@ export const Pricing = () => {
           </Grid>
         </Grid>
 
-        <Divider className={classes.divider} />
+        <Divider className={classes.divider}/>
 
-        <Typography variant="h4" className={classes.sectionTitle}>
+        <Typography variant="h4" className={classes.sectionTitle} sx={{marginBottom: "20px"}}>
           Como Funciona
         </Typography>
-        <Grid container spacing={6}>
+        <Grid container spacing={10}>
           <Grid item xs={12} md={6}>
             <Typography variant="h6" className={classes.faq}>
               Para Usuários:
@@ -203,7 +211,7 @@ export const Pricing = () => {
 
         <Divider className={classes.divider} />
 
-        <Typography variant="h4" className={classes.sectionTitle}>
+        <Typography variant="h4" className={classes.sectionTitle} sx={{marginBottom: "20px"}}>
           Depoimentos de Clientes
         </Typography>
         <Grid container spacing={6} justifyContent="center">
@@ -229,7 +237,7 @@ export const Pricing = () => {
 
         <Divider className={classes.divider} />
 
-        <Typography variant="h4" className={classes.sectionTitle}>
+        <Typography variant="h4" className={classes.sectionTitle} sx={{marginBottom: "20px"}}>
           Perguntas Frequentes
         </Typography>
         <Grid container spacing={6} justifyContent="center">
@@ -258,6 +266,23 @@ export const Pricing = () => {
           </Grid>
         </Grid>
       </Container>
+      <footer>
+          <Box
+            className={classes.backgroundSite}
+            style={{ padding: theme.spacing(4), backgroundColor: "#04080a" }}
+          >
+            <Typography
+              variant="subtitle1"
+              align="center"
+              color="textSecondary"
+              component="p"
+            >
+              Home • Suporte • Marketing • Seja Cliente Termos de Uso •
+              Politicas de Privacidade
+              <br /> © Reservify • 2024
+            </Typography>
+          </Box>
+        </footer>
     </ThemeProvider>
   );
 };
