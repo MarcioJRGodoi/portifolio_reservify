@@ -18,6 +18,7 @@ import { Sessao } from "../components/primeiro";
 import axios from "axios";
 import { Navbar } from "../components/NavBar";
 import { Alerta } from "../plugins/Alerta";
+import { Video } from "../components/Video";
 
 const theme = createTheme();
 
@@ -284,6 +285,9 @@ export const App = () => {
             className={classes.customDivider}
             sx={{ backgroundColor: "gray" }}
           />
+
+          <Video />
+
           <Box className={classes.backgroundSite}>
             <Container maxWidth="sm" className={classes.formContainer}>
               <Typography
@@ -294,10 +298,8 @@ export const App = () => {
               >
                 Seja nosso cliente!
               </Typography>
-              <Typography variant="body1" align="center">
-                Preencha o formulário abaixo para agendar uma demonstração
-                gratuita do Reservify e descubra como podemos transformar a
-                gestão de reservas do seu restaurante.
+              <Typography variant="body1" align="justify">
+                Preencha o formulário abaixo para receber um e-book gratuito nosso e descubra como você pode transformar a sua empresa com uma nova forma de gestão de reservas em seu restaurante.
               </Typography>
               <form noValidate autoComplete="off">
                 <Box sx={{marginTop: "12px", display: "flex", justifyContent: "center" }}></Box>
