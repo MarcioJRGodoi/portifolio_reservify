@@ -9,7 +9,7 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    minHeight: "50vh",
+    minHeight: "100vh",
     backgroundColor: "#2C2C2C",
     padding: theme.spacing(4),
   },
@@ -48,43 +48,54 @@ const useStyles = makeStyles(() => ({
     alignSelf: "center",
     alignContent: "center",
   },
+  videoContainer: {
+    position: "relative",
+    width: "100%",
+    paddingBottom: "56.25%", // 16:9 aspect ratio
+    height: 0,
+  },
+  iframe: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+  },
 }));
 
-
 export const Video = () => {
-    const classes = useStyles();
+  const classes = useStyles();
 
-    return (
+  return (
     <>
-        <Box className={classes.section}>
-            <Container maxWidth="lg">
-                <Grid container justifyContent="center">
-                <Grid item xs={12} textAlign="center">
-                    <Typography variant="h4" gutterBottom>
-                    Vídeo de Apresentação
-                    </Typography>
-                </Grid>
-                <Grid item>
-                    <iframe
-                    width="560"
-                    height="315"
-                    src="https://www.youtube.com/embed/4l8Ix2Yt70c?si=OU_8oqK2SrrDzhZE&amp;"
-                    title="YouTube video player"
-                    frameBorder="0"
-                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                    ></iframe>
-                </Grid>
-                </Grid>
-            </Container>
-    </Box>
+      <Box className={classes.section}>
+        <Container maxWidth="lg" sx={{ maxHeight: "100%" }}>
+          <Grid container justifyContent="center">
+            <Grid item xs={12} textAlign="center">
+              <Typography variant="h4" gutterBottom>
+                Vídeo de Apresentação
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <div className={classes.videoContainer}>
+                <iframe
+                  className={classes.iframe}
+                  src="https://www.youtube.com/embed/4l8Ix2Yt70c?si=OU_8oqK2SrrDzhZE"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
 
-    <Divider
-    className={classes.customDivider}
-    sx={{ backgroundColor: "gray" }}
-    />
+      <Divider
+        className={classes.customDivider}
+        sx={{ backgroundColor: "gray" }}
+      />
     </>
-    );
-
-
+  );
 };
