@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { Navbar } from "../components/NavBar";
+import { Footer } from "../components/Footer";
 
 const darkTheme = createTheme({
   palette: {
@@ -237,7 +238,9 @@ export const Pricing = () => {
             </Box>
           </Grid>
         </Grid>
+        
       </Container>
+      <Footer />
     </ThemeProvider>
   );
 };

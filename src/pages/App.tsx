@@ -19,6 +19,7 @@ import axios from "axios";
 import { Navbar } from "../components/NavBar";
 import { Alerta } from "../plugins/Alerta";
 import { Video } from "../components/Video";
+import { Footer } from "../components/Footer";
 
 const theme = createTheme();
 
@@ -363,23 +364,7 @@ export const App = () => {
             </Container>
           </Box>
         </main>
-        <footer>
-          <Box
-            className={classes.backgroundSite}
-            style={{ padding: theme.spacing(4), backgroundColor: "#04080a" }}
-          >
-            <Typography
-              variant="subtitle1"
-              align="center"
-              color="textSecondary"
-              component="p"
-            >
-              Home • Suporte • Marketing • Seja Cliente Termos de Uso •
-              Politicas de Privacidade
-              <br /> © Reservify • 2024
-            </Typography>
-          </Box>
-        </footer>
+        <Footer />
       </Box>
     </ThemeProvider>
   );
