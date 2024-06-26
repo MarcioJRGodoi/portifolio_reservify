@@ -13,6 +13,7 @@ import {
 import { createTheme } from "@mui/material/styles";
 import { Navbar } from "../components/NavBar";
 import { Footer } from "../components/Footer";
+import Carousel from 'react-material-ui-carousel'; // Importe o componente de carrossel
 
 const darkTheme = createTheme({
   palette: {
@@ -87,6 +88,59 @@ const Plan = ({ title, price, features, buttonText }: PlanProps) => (
       {buttonText}
     </Button>
   </Box>
+);
+
+const testimonials = [
+  {
+    quote: "O aplicativo é fantástico e a equipe de suporte é extremamente prestativa!",
+    author: "Cliente Satisfeito",
+  },
+  {
+    quote: "Melhor serviço de reservas que já usei, super recomendo!",
+    author: "Outro Cliente Satisfeito",
+  },
+  {
+    quote: "As funcionalidades avançadas do plano Empresarial são essenciais para o meu negócio.",
+    author: "Cliente Empresarial",
+  },
+  // Adicione mais depoimentos aqui se desejar
+];
+
+const TestimonialCarousel = () => (
+  <Carousel
+    autoPlay
+    indicators={false}
+    navButtonsAlwaysVisible
+    animation="fade"
+    navButtonsProps={{
+      style: {
+        backgroundColor: 'transparent',
+        color: '#1de9b6',
+        borderRadius: 50,
+        margin: 10,
+      }
+    }}
+    sx={{
+      maxWidth: 600,
+      margin: '0 auto',
+      textAlign: 'center',
+      '& .carousel-item': {
+        height: '200px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+      }
+    }}
+  >
+    {testimonials.map((testimonial, index) => (
+      <Box key={index} className="carousel-item" sx={{ padding: 3 }}>
+        <Typography sx={{ fontStyle: "italic", marginBottom: 3 }}>
+          "{testimonial.quote}"
+        </Typography>
+        <Typography>- {testimonial.author}</Typography>
+      </Box>
+    ))}
+  </Carousel>
 );
 
 export const Pricing = () => {
@@ -187,26 +241,7 @@ export const Pricing = () => {
         <Typography variant="h4" sx={{ textAlign: "center", marginTop: 8, marginBottom: 6 }}>
           Depoimentos de Clientes
         </Typography>
-        <Grid container spacing={6} justifyContent="center">
-          <Grid item xs={12} sm={6} md={4}>
-            <Typography sx={{ fontStyle: "italic", marginBottom: 5 }}>
-              "O aplicativo é fantástico e a equipe de suporte é extremamente prestativa!"
-            </Typography>
-            <Typography>- Cliente Satisfeito</Typography>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <Typography sx={{ fontStyle: "italic", marginBottom: 5 }}>
-              "Melhor serviço de reservas que já usei, super recomendo!"
-            </Typography>
-            <Typography>- Outro Cliente Satisfeito</Typography>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <Typography sx={{ fontStyle: "italic", marginBottom: 5 }}>
-              "As funcionalidades avançadas do plano Empresarial são essenciais para o meu negócio."
-            </Typography>
-            <Typography>- Cliente Empresarial</Typography>
-          </Grid>
-        </Grid>
+        <TestimonialCarousel />
 
         <Divider sx={{ margin: `${8}px 0` }} />
 
