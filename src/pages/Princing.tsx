@@ -13,6 +13,80 @@ import {
 import { createTheme } from "@mui/material/styles";
 import { Navbar } from "../components/NavBar";
 
+const theme = createTheme();
+
+const useStyles = makeStyles(() => ({
+  root: {
+    flexGrow: 1,
+    paddingTop: theme.spacing(10),
+    paddingBottom: theme.spacing(8),
+  },
+  backgroundSite: {
+    width: "100%",
+    padding: theme.spacing(4),
+    backgroundColor: "#070f13",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  title: {
+    textAlign: "center",
+    marginBottom: theme.spacing(6),
+  },
+  plan: {
+    padding: theme.spacing(4),
+    textAlign: "center",
+    border: "1px solid #ccc",
+    borderRadius: "8px",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    marginBottom: theme.spacing(4),
+  },
+  planTitle: {
+    marginBottom: theme.spacing(5),
+    fontWeight: "bold",
+  },
+  planPrice: {
+    fontSize: "24px",
+    marginBottom: theme.spacing(5),
+    color: "#1de9b6",
+  },
+  planFeatures: {
+    listStyle: "none",
+    padding: 0,
+    textAlign: "left",
+    marginBottom: theme.spacing(3),
+  },
+  feature: {
+    marginBottom: theme.spacing(1),
+  },
+  planButton: {
+    marginTop: "auto",
+    backgroundColor: "#1de9b6",
+    color: "#fff",
+  },
+  sectionTitle: {
+    textAlign: "center",
+    marginTop: theme.spacing(8),
+    marginBottom: theme.spacing(6),
+  },
+  testimonial: {
+    fontStyle: "italic",
+    marginBottom: theme.spacing(5),
+  },
+  faq: {
+    marginBottom: theme.spacing(3),
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
+  },
+  divider: {
+    margin: `${theme.spacing(8)}px 0`,
+  },
+}));
+
 const darkTheme = createTheme({
   palette: {
     mode: "dark",
@@ -93,17 +167,11 @@ export const Pricing = () => {
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <Navbar />
-      <Container
-        sx={{
-          flexGrow: 1,
-          paddingTop: 10,
-          paddingBottom: 8,
-        }}
-      >
-        <Typography variant="h4" sx={{ textAlign: "center", marginBottom: 6 }}>
-          Planos de Preços
+      <Container className={classes.root}>
+        <Typography variant="h4" className={classes.title}>
+          Planos Oferecidos
         </Typography>
-        <Grid container spacing={6} justifyContent="center" sx={{ marginTop: 5, marginBottom: 5 }}>
+        <Grid container spacing={6} justifyContent="center" marginTop={2} marginBottom={5}>
           <Grid item xs={12} sm={6} md={3}>
             <Plan
               title="Gratuito para Usuários"
@@ -155,12 +223,12 @@ export const Pricing = () => {
           </Grid>
         </Grid>
 
-        <Divider sx={{ margin: `${8}px 0` }} />
+        <Divider className={classes.divider}/>
 
-        <Typography variant="h4" sx={{ textAlign: "center", marginTop: 8, marginBottom: 6 }}>
+        <Typography variant="h4" className={classes.sectionTitle} sx={{marginBottom: "20px"}}>
           Como Funciona
         </Typography>
-        <Grid container spacing={6}>
+        <Grid container spacing={10}>
           <Grid item xs={12} md={6}>
             <Typography variant="h6" sx={{ marginBottom: 3 }}>
               Para Usuários:
@@ -183,7 +251,7 @@ export const Pricing = () => {
 
         <Divider sx={{ margin: `${8}px 0` }} />
 
-        <Typography variant="h4" sx={{ textAlign: "center", marginTop: 8, marginBottom: 6 }}>
+        <Typography variant="h4" className={classes.sectionTitle} sx={{marginBottom: "20px"}}>
           Depoimentos de Clientes
         </Typography>
         <Grid container spacing={6} justifyContent="center">
@@ -209,7 +277,7 @@ export const Pricing = () => {
 
         <Divider sx={{ margin: `${8}px 0` }} />
 
-        <Typography variant="h4" sx={{ textAlign: "center", marginTop: 8, marginBottom: 6 }}>
+        <Typography variant="h4" className={classes.sectionTitle} sx={{marginBottom: "20px"}}>
           Perguntas Frequentes
         </Typography>
         <Grid container spacing={6} justifyContent="center">
@@ -238,6 +306,23 @@ export const Pricing = () => {
           </Grid>
         </Grid>
       </Container>
+      <footer>
+          <Box
+            className={classes.backgroundSite}
+            style={{ padding: theme.spacing(4), backgroundColor: "#04080a" }}
+          >
+            <Typography
+              variant="subtitle1"
+              align="center"
+              color="textSecondary"
+              component="p"
+            >
+              Home • Suporte • Marketing • Seja Cliente Termos de Uso •
+              Politicas de Privacidade
+              <br /> © Reservify • 2024
+            </Typography>
+          </Box>
+        </footer>
     </ThemeProvider>
   );
 };

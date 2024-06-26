@@ -18,6 +18,7 @@ import { Sessao } from "../components/primeiro";
 import axios from "axios";
 import { Navbar } from "../components/NavBar";
 import { Alerta } from "../plugins/Alerta";
+import { Video } from "../components/Video";
 
 const theme = createTheme();
 
@@ -118,7 +119,7 @@ const useStyles = makeStyles(() => ({
     border: "none",
     cursor: "pointer",
     padding: 0,
-    top: "150%",
+    top: "70%",
   },
   customDivider: {
     width: "100%",
@@ -264,9 +265,6 @@ export const App = () => {
                       </Typography>
                     </li>
                   </ul>
-                  <Button variant="outlined" color="primary">
-                    Learn More
-                  </Button>
                 </Grid>
                 <Grid item xs={12} md={6} className={classes.rightContent}>
                   <img
@@ -287,6 +285,9 @@ export const App = () => {
             className={classes.customDivider}
             sx={{ backgroundColor: "gray" }}
           />
+
+          <Video />
+
           <Box className={classes.backgroundSite}>
             <Container maxWidth="sm" className={classes.formContainer}>
               <Typography
@@ -297,13 +298,11 @@ export const App = () => {
               >
                 Seja nosso cliente!
               </Typography>
-              <Typography variant="body1" align="center">
-                Preencha o formulário abaixo para agendar uma demonstração
-                gratuita do Reservify e descubra como podemos transformar a
-                gestão de reservas do seu restaurante.
+              <Typography variant="body1" align="justify">
+                Preencha o formulário abaixo para receber um e-book gratuito nosso e descubra como você pode transformar a sua empresa com uma nova forma de gestão de reservas em seu restaurante.
               </Typography>
               <form noValidate autoComplete="off">
-                <Box sx={{ display: "flex", justifyContent: "center" }}></Box>
+                <Box sx={{marginTop: "12px", display: "flex", justifyContent: "center" }}></Box>
                 <Grid container spacing={2}>
                   {" "}
                   {/* Ajuste o spacing conforme necessário */}
